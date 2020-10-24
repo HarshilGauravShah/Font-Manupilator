@@ -10,11 +10,25 @@ function setup()
     poseNet.on('pose', gotPoses);
 }
 
+noseX=0;
+noseY=0;
+difference=0;
+rightwristX=0;
+leftwristX=0;
+Harshil=Text
 
 function draw()
 {
+    
     background('#969a97');
+    fill('#F90093');
+    stroke('#F90093');
+    Harshil;
+    fill('Red')
+    
 }
+
+
 
 function modelLoaded()
 {
@@ -26,5 +40,14 @@ function gotPoses(results)
     if(results.length > 0)
     {
         console.log(results);
+        noseX = results[0].pose.nose.x;
+        noseY = results[0].pose.nose.y;
+        console.log("noseX = " + noseY + "noseY = " + noseY);
+
+        leftwristX = results[0].pose.leftWrist.x;
+        rightwristX = results[0].pose.rightWrist.x;
+        difference = floor(leftwristX-rightwristX);
+
+        console.log("leftwristX is " + leftwristX + "and RightwristX is " + rightwristX + " difference is          " + difference)
     }
 }
